@@ -1,0 +1,183 @@
+<div id="private-home" class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h4>Your profile settings:</h4>
+      <br>
+      <form action="/user/{{user._id}}/edit" method="post">
+        <div class="form-group">
+          <label for="name">Full Name:</label>
+          <input class="form-control" type="text" name="fname" value="{{user.full_name}}">
+        </div>
+        <div class="form-group">
+          <label for="name">City:</label>
+          <input class="form-control" type="text" name="city" value="{{user.city}}">
+        </div>
+        <div class="form-group">
+          <label for="name">State:</label>
+          <input class="form-control" type="text" name="state" value="{{user.state}}">
+        </div>
+        <div class="form-group">
+          <input class="btn btn-default" type="submit" name="" value="Edit">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-xs-12">
+      <h4>Your books:</h4>
+      <br>
+    </div>
+
+    {{#each books as |book|}}
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          {{book.name}}
+          <span class="glyphicon glyphicon-book pull-left panel-glyphicon" aria-hidden="true"></span>
+          <a href="/book/{{book._id}}/remove">
+            <span class="glyphicon glyphicon-remove pull-right panel-glyphicon" aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="panel-body">
+          <img class="img-responsive" src="{{book.image}}" alt="">
+        </div>
+      </div>
+    </div>
+    {{/each}}
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Add a new book
+          <span class="glyphicon glyphicon-plus pull-right panel-glyphicon" aria-hidden="true"></span>
+        </div>
+        <div class="panel-body">
+          <form class="" action="/book/add" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input class="form-control" type="text" name="name" value="">
+            </div>
+            <div class="form-group">
+              <label for="image">Image:</label>
+              <input type="file" name="image" value="">
+            </div>
+            <div class="form-group">
+              <input class="btn btn-default btn-block" type="submit" name="" value="Add">
+            </div>
+            <div class="form-group">
+              {{#if err}}
+              <div class="alert alert-danger" role="alert">
+                <ul>
+                  <li>{{err}}</li>
+                </ul>
+              </div>
+              {{/if}}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-xs-12">
+      <h4>Offers to you: </h4>
+      <br>
+    </div>
+
+    {{#each trades_to_you as |trade|}}
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          {{trade.offering.name}} for {{trade.wants.name}}
+          <span class="glyphicon glyphicon-book pull-right panel-glyphicon" aria-hidden="true"></span>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-6">
+                <img class="img-responsive" src="{{trade.offering.image}}" alt="">
+              </div>
+              <div class="col-xs-6">
+                <img class="img-responsive" src="{{trade.wants.image}}" alt="">
+              </div>
+              <div class="col-xs-12">
+                <br>
+                <p>Offered by: {{trade.offering_user.name}}</p>
+                <p>Email: {{trade.offering_user.email}}</p>
+                <a href="/user/{{trade.offering.name}}">
+                  <p>Offerer profile</p>
+                </a>
+                {{#if trade.accepted}}
+                  Status: Accepted
+                {{else}}
+                  Status: -
+                {{/if}}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <a href="/book/trade/{{trade._id}}/decline">
+              <button class="btn btn-default" type="button">Decline</button>
+            </a>
+            <a href="/book/trade/{{trade._id}}/accept">
+              <button class="btn btn-default" type="button">Accept</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Your offers: </h4>
+      <br>
+    </div>
+
+    {{#each your_trades as |trade|}}
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          {{trade.offering.name}} for {{trade.wants.name}}
+          <span class="glyphicon glyphicon-book pull-right panel-glyphicon" aria-hidden="true"></span>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-6">
+                <img class="img-responsive" src="{{trade.offering.image}}" alt="">
+              </div>
+              <div class="col-xs-6">
+                <img class="img-responsive" src="{{trade.wants.image}}" alt="">
+              </div>
+              <div class="col-xs-12">
+                <br>
+                <p>Offered to: {{trade.wants_user.name}}</p>
+                <p>Email: {{trade.wants_user.email}}</p>
+                <a href="/user/{{trade.wants_user.name}}">
+                  <p>Book owner's profile</p>
+                </a>
+                {{#if trade.accepted}}
+                  Status: Accepted
+                {{else}}
+                  Status: -
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+
+  </div>
+
+</div>

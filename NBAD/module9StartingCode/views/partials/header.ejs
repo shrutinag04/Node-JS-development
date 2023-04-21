@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+    <title>
+        Log In
+    </title>
+</head>
+
+<body>
+    <nav>
+        <a href='/'>Home</a>
+        <a href='/new'>Sign Up</a>
+        <a href='/login'>Login</a>
+        <a href='/profile'>Profile</a>
+        <a href='/logout'>Logout</a>
+    </nav>
+
+    <%if(errorMessages.length>0){
+        errorMessages.forEach(message=>{%>
+            <div class='error'><%=message%></div>
+       <% });
+    }%>
+    <%if(successMessages.length>0){
+        successMessages.forEach(message=>{%>
+            <div class='success'><%=message%></div>
+       <% });
+    }%>
+
+

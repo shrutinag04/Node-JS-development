@@ -1,0 +1,67 @@
+<div id="public-index" class="container">
+
+  <div class="row">
+
+    <div class="col-xs-12">
+      <h4>Book Club books:</h4>
+      <hr>
+    </div>
+
+    {{#each books as |book|}}
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="glyphicon glyphicon-book panel-glyphicon" aria-hidden="true"></span>
+          {{ book.name }}
+        </div>
+        <div class="panel-body">
+          <img class="img-responsive" src="{{book.image}}" alt="">
+          <br>
+          <!-- Button trigger modal -->
+          {{user.name}}
+          {{#if ../user}}
+          <button class="btn btn-default btn-sm pull-right" type="button" name="button" data-toggle="modal" data-target="#tradeModal-{{book._id}}">
+            Trade
+          </button>
+          {{else}}
+          <a href="/login">
+            <button class="btn btn-default btn-sm pull-right" type="button" name="button">
+              Trade
+            </button>
+          </a>
+          {{/if}}
+          <!-- Modal -->
+          <div id="tradeModal-{{book._id}}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Books to trade for {{book.name}}</h4>
+                </div>
+                <div class="modal-body">
+                  {{#each ../userBooks as |userBook|}}
+                    <img class="img-responsive" src="{{userBook.image}}" alt="">
+                    <br>
+                    <a href="/book/{{book._id}}/trade/{{userBook._id}}">
+                      <button class="btn btn-default" type="button" name="button">Trade</button>
+                    </a>
+                    <hr>
+                  {{/each}}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+
+  </div>
+
+</div>

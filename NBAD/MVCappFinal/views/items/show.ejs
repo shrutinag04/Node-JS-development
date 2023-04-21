@@ -1,0 +1,47 @@
+<%- include('../partials/header.ejs')%>
+  <section id="showcasetrade">
+    <div class="showcasecontainer">
+      <div class="flexrow">
+        <div class="flexcolumn">
+          <h1>
+            <img src="/images/shawn.jpeg" alt="logo" />
+            <%=items.name%>
+          </h1>
+
+          <h3>by <%=items.category%> </h3>
+          <small>Posted <%= items.createdAt.toLocaleString()%> by <%= items.author.firstName + ' ' + items.author.lastName%></small>
+        </div>
+        <div class="flexcolumn">
+          <h3>Are you interested?</h3>
+         <!-- <button onclick="window.location.href='/users/profile'">Trade</button>
+          <button onclick="window.location.href='/users/watch'">Watch</button>-->
+          <form>
+            <button type="submit" formmethod="GET" formaction="/trades/<%=items.id%>/trade">Trade</button>
+            <%if(flag==false){%>
+            <button type="submit" formmethod="GET" formaction="/trades/<%=items.id%>/watch">Watch</button>
+            <%} else{%>
+              <button type="submit" formmethod="GET" formaction="/trades/<%=items.id%>/unwatch">Unwatch</button>
+            <%}%>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <section id="maintrade">
+      <h1>Details</h1>
+      <p><%=items.details%></p>
+    </section>
+    
+  </div>
+  <%if(user == items.author._id){%>
+  <form>
+    <button type="submit" formmethod="GET" formaction="/items/<%=items.id%>/edit">Edit</button>
+    <button type="submit" formmethod="POST" formaction="/items/<%=items.id%>?_method=DELETE">Delete</button>
+</form>
+<%}%>
+  <%- include('../partials/footer.ejs')%>
+</body>
+
+</html>

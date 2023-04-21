@@ -1,0 +1,62 @@
+<%- include('../partials/header.ejs')%>
+    <div class="formcontainer">
+        <form action='/items/<%=items.id%>?_method=PUT' method='POST'>
+            <div class="row">
+                <div class="col-25">
+                    <label>Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="name" placeholder="Name" value="<%= items.name%>" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label>Category</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="category" placeholder="Category" value="<%= items.category%>" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label>Details</label>
+                </div>
+                <div class="col-75">
+                    <textarea name="details" placeholder="Description" required minlength="10"><%= items.details%></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label>Status</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="status" placeholder="Status" value="<%= items.status%>" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label>Image</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="image" placeholder="Image Path" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label>Year</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="year" placeholder="Year" value="<%= items.year%>" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <input type="submit" value="Submit Trade">
+            </div>
+
+        </form>
+    </div>
+    <%- include('../partials/footer.ejs')%>
+</body>
+
+</html>

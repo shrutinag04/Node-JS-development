@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+    <html>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>music zone</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body>
+    
+        <div class="main-header">
+            <div class="headercontainer">
+                <a href="/"><img src="/images/logo.jpeg" alt="logo" /></a>
+                <h1>MusicZone</h1>
+    
+            </div>
+            <nav class="site-navigation">
+                <ul class="nav">
+                    <li><a href="/items/new">StartTrading</a></li>
+                    <%if(!user){%>
+                    <li><a href="/users/login">Login</a></li>
+                    <li><a href="/users/new">SignUp</a></li>
+                    <%}else{%>
+                    <li><a href='/users/profile'>Profile</a></li>
+                    <li><a href='/users/logout'>Logout</a></li>
+                    <% }%>
+                </ul>
+            </nav>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/items">Trades</a></li>
+                <li><a href="/items/about">About</a></li>
+            </ul>
+    
+        </div>
+
+        <% if(errorMessages.length > 0) {%>
+            <% errorMessages.forEach(message=>{%>
+                <div class='error'>
+                    <%=message%>
+                </div>
+                <%});%>
+                    <%}%>
+        
+                        <% if(successMessages.length > 0) {%>
+        
+                            <% successMessages.forEach(message=>{%>
+                                <div class='success'>
+                                    <%=message%>
+                                </div>
+                                <%});%>
+                                    <%}%>

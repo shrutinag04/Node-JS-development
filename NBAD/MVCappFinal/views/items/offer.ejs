@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs')%>
+    <form>
+    <table>
+           <tr> <td><img src="/images/shawn.jpeg" width="200" height="40" alt="logo"  /></td>
+           <td><img src="/images/shawn.jpeg" width="200" height="40" alt="logo" /></td></tr>
+            <tr>
+            <td><%=tradeItem.offeredItem%></td>
+            <td><%=tradeItem.wantedItem%></td>
+            <%console.log(user.firstName)%>
+            <%console.log(tradeItem.offered_user)%>
+        <%if(user.firstName==tradeItem.offered_user){%>
+           
+            <td><button type="submit" formmethod="POST" formaction="/trades/<%=tradeItem.offeredId%>/trade/<%=tradeItem.wantedId%>">Cancel Offer</button></td></tr>
+        <%}else{%>
+            <td><button type="submit" formmethod="POST" formaction="/trades/<%=tradeItem.offeredId%>/trade/<%=tradeItem.wantedId%>">Accept</button></td>
+            <td><button type="submit" formmethod="POST" formaction="/trades/<%=tradeItem.offeredId%>/trade/<%=tradeItem.wantedId%>">Reject</button></td></tr>
+
+        
+         <%}%>   
+            
+    </table>
+</form>
+
+<%- include('../partials/footer.ejs')%>
+</body>
+
+</html>

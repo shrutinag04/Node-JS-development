@@ -1,0 +1,42 @@
+
+<%- include('../partials/header.ejs')%>
+<div class = "content">
+    <h2>Welcome</h2>
+    <br>
+
+    <%if(items.length){%>
+        <h3><p>You have the following items to trade</p></h3>
+        <form>
+            <table>
+            <th>
+                <tr>
+                    <td></td>
+                    <td>Name</td>
+                    <td>Category</td>
+                    <td>Status</td>
+                </tr>
+            </th>
+        <% items.forEach(items=>{%>
+        <tr>
+            <p>
+            <td><input type="radio" name="selectedTrade" value="<%=items.id%>"" id="selectedTrade"></td>
+            <td><a href = '/items/<%=items.id%>'><%=items.name%></a></td>
+            <td><%=items.category%></td>
+            <td><%=items.status%></td>
+            </p>
+        </tr>
+        
+        <%});%>
+
+    </table>
+   
+        <!-- <button type="submit" formmethod="GET" formaction="/items/<%=items.id%>/trade">Trade</button> -->
+        <button type="submit" formmethod="POST" formaction="/trades/<%=offeringItem.id%>/trade">Trade</button>
+    <%}else{%>
+        <p>You have not created any items</p>
+    <%}%>
+        </form>
+</div>
+
+
+    <%- include('../partials/footer.ejs')%>

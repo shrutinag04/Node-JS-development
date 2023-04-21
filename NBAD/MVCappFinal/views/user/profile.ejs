@@ -1,0 +1,103 @@
+<%- include('../partials/header.ejs')%>
+<div class="content">
+  <h2>Welcome, <%=user.firstName%></h2>
+  <br />
+
+  <%if(items.length){%>
+  <h3><p>You have created the following items</p></h3>
+  <form>
+    <%items.forEach(items=>{%>
+    <a href="/items/<%=items.id%>"
+      ><p>
+        <%=items.name%>
+        <button
+          type="submit"
+          formmethod="GET"
+          formaction="/items/<%=items.id%>/edit"
+        >
+          Update
+        </button>
+        <button
+          type="submit"
+          formmethod="POST"
+          formaction="/items/<%=items.id%>?_method=DELETE"
+        >
+          Delete
+        </button>
+        <%if(tradeItems.length){ tradeItems.forEach(currentTradeItems=>{
+        if(currentTradeItems.offeredItem==items.name ||
+        currentTradeItems.wantedItem==items.name){%>
+        <button
+          type="submit"
+          formmethod="GET"
+          formaction="/trades/<%=items.id%>/offer/<%=currentTradeItems.wantedId%>"
+        >
+          Manage Offer
+        </button>
+
+        <% }})}%>
+      </p></a
+    >
+    <%}); }else{%>
+    <p>You have not created any items</p>
+    <%}%>
+  </form>
+</div>
+
+<div class="content">
+  <br />
+  <%if(user.watchList.length){%>
+  <h3><p>Your watched items</p></h3>
+  <form>
+    <a href="/items/<%=items.id%>"
+      ><p>
+        <%user.watchList.forEach(userItem=>{ %> <% allItems.forEach(item => { %>
+        <% if(item._id == userItem) { %> <%= item.name%>
+        <button
+          type="submit"
+          formmethod="GET"
+          formaction="/trades/<%=item.id%>/unwatch"
+        >
+          Unwatch
+        </button>
+        <% } %> <% }) %> <% })%>
+      </p></a
+    >
+    <%} else{%>
+    <p>You have not watched any items</p>
+    <%}%>
+  </form>
+</div>
+
+<div class="content">
+  <br />
+
+  <%if(tradeItems.length){%>
+  <h3><p>Your offered items</p></h3>
+  <form>
+    <table>
+      <tr>
+        <%tradeItems.forEach(currentTradeItems=>{%>
+        <p>
+          <td><%=currentTradeItems.offeredItem%></td>
+          <td><%=currentTradeItems.offeredItemStatus%></td>
+          <td><%=currentTradeItems.offeredItemCategory%></td>
+          <%console.log(currentTradeItems.offeredId)%>
+          <td>
+            <button
+              type="submit"
+              formmethod="POST"
+              formaction="/trades/<%=currentTradeItems.offeredId%>/trade/<%=currentTradeItems.wantedId%>"
+            >
+              Cancel Offer
+            </button>
+          </td>
+        </p>
+      </tr>
+    </table>
+    <%}); }else{%>
+    <p>You have not offered any items</p>
+    <%}%>
+  </form>
+</div>
+<%- include('../partials/footer.ejs')%>

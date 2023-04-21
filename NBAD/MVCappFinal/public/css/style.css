@@ -1,0 +1,285 @@
+/*header style*/
+.headercontainer{
+    
+    float:left;
+  }
+.headercontainer img {
+    float: left;
+    
+    max-width: 55px;
+    margin: 0 10px 0 0;
+    }
+  
+.headercontainer h1 {
+    font-size: 1.5em;
+    margin: .7em 0 .3em 0;
+    display: inline-block;
+    color: black;
+    font-style: italic;
+    font-size: 30px;
+    font-family: Stencil Std, fantasy;
+    font-weight: bolder;
+    font-variant: small-caps;
+      
+  }
+  body{
+    font-family:Apple Chancery, cursive;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  h1 {
+    margin-top: 40px;
+  }
+
+img{
+    max-width: 100%;
+    max-width: 100%;
+}
+.main-header{
+    background-color:#008b8b;
+  border-bottom: 1px solid #ccc;
+  padding: .5em 1em;
+    
+  }
+  .main-header li{
+      font-family: Courier New, monospace;
+      font-size: medium;
+      font-weight: bold;
+    
+    
+  }
+  .main-header::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .site-navigation {
+    float: right;
+  }
+  
+  .site-navigation ul, li {
+    margin: 0; 
+    padding: 0;
+  }
+  
+  .site-navigation li {
+    display: inline-block;
+    margin: 1.4em 1em 1em 1em;
+  }
+  .menu{
+    
+  background-color:#008b8b;
+  border-bottom: 1px solid #ccc;
+  padding: .5em 1em;
+  }
+  .menu ul, li {
+    margin: 0; 
+    padding: 0;
+    font-family: Courier New, monospace;
+      font-size: medium;
+      font-weight: bold;
+  }
+  .menu li{
+    display: inline-block;
+    padding: .5em 1em;
+  }
+
+  /*footer style*/
+  #main-footer{
+    background-color:#008b8b;
+    position: fixed;
+    width: 100%;
+    text-align:left;
+    padding:20px 30px;
+    margin-top:10px;
+    left: 0.5;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+.listmenu ul, li {
+    margin: 0; 
+    padding: 0;
+    left:0.5;
+  }
+li:not(:last-child) {
+  margin-right: 15px;
+}
+
+.listmenu li{
+    display: inline-block;
+    padding: .5em 1em;
+    padding-left:0px;         ;
+  }
+  /*footer media logos*/
+  .fa {
+    text-align: right;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+.fa-twitter {
+    
+    background: #008b8b;
+    color: white;
+  }
+  .fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #008b8b;
+  color: white;
+}
+
+* {
+    box-sizing: border-box;
+  }
+/*create trade form*/
+  .formcontainer input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-family:Apple Chancery, cursive;
+  }
+  
+  .formcontainer label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-family:Apple Chancery, cursive;
+  }
+  
+  .formcontainer  input[type=submit] {
+    background-color: #008b8b;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    font-family:Apple Chancery, cursive;
+  }
+  
+  .formcontainer  input[type=submit]:hover {
+    background-color: #7ea4b3;
+  }
+  
+  .formcontainer{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    font-family:Apple Chancery, cursive;
+
+  }
+  
+  .col-25 {
+    float: left;
+    width: 15%;
+    margin-top: 6px;
+    font-family:Apple Chancery, cursive;
+    text-align: right;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+    font-family:Apple Chancery, cursive;
+  }
+
+  .row:last-child {
+    padding-right: 10%;
+  }
+  
+  /* Clear floats after the columns */
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  #showcasetrade img {
+    float: left;
+    
+    max-width: 200px;
+    margin: 0 10px 0 0;
+    }
+  
+#showcasetrade h1 h3{
+    font-size: 3em;
+    margin: .7em 0 .3em 0;
+    display: inline-block;
+      
+  }
+  .flexrow {
+    display: flex;
+  }
+  
+  /* Create two equal columns that sits next to each other */
+  .flexcolumn {
+    flex: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+    
+  }
+  body  {
+    
+    background-color: #FFFFFF;
+    
+  }
+  .cardcolumn {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  .cardrow {margin: 0 -5px;}
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+
+  * {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+ 
+  /* Responsive layout*/
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+  .success {
+    background: rgba(108, 192, 112, 0.7);
+    color: #fff;
+    width: 70%;
+    text-align: center;
+    padding: 10px 10px;
+  }
+  
+  .error {
+    background: rgba(255, 102, 51, 0.7);
+    color: #fff;
+    width: 70%;
+    text-align: center;
+    padding: 10px 10px;
+  }
+ 

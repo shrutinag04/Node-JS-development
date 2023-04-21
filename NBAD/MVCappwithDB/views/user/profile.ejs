@@ -1,0 +1,14 @@
+
+<%- include('../partials/header.ejs')%>
+<div class = "content">
+    <h2>Welcome, <%=user.firstName%></h2>
+    <%if(items.length){%>
+        <p>You have created the following items</p>
+        <%items.forEach(items=>{%>
+            <a href = '/items/<%=items.id%>'><p><%=items.name%></p></a>
+        <%});
+    }else{%>
+        <p>You have not created any items</p>
+    <%}%>
+    </div>
+    <%- include('../partials/footer.ejs')%>
